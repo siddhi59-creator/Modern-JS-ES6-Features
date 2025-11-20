@@ -1,0 +1,7 @@
+// Arrow function with default parameters
+const multiply = (a = 1, b = 1) => a * b;
+
+// Example outputs
+console.log(multiply(3, 4)); // 12
+console.log(multiply());     // 1 (defaults used)
+console.log(multiply(5));    // 5 (b defaults to 1)

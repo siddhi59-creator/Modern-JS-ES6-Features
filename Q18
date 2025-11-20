@@ -1,0 +1,46 @@
+// a) let vs var example
+if (true) {
+  let x = 10;   // block-scoped
+  var y = 20;   // function-scoped
+}
+
+console.log(y); // 20 works because var escapes the block
+
+try {
+  console.log(x); // Error is not defined (let is block scoped)
+} catch (err) {
+  console.log("Error accessing x:", err.message);
+}
+
+// Explanation:
+// 'var' is function-scoped, so it is accessible outside the block.
+// 'let' is block-scoped, so 'x' exists ONLY inside the if-block.
+
+
+// b) Optional chaining
+const profile = {
+  user: {
+    details: {
+      email: "test@mail.com"
+    }
+  }
+};
+
+// Access safely
+console.log(profile?.user?.details?.email);  // "test@mail.com"
+console.log(profile?.user?.details?.phone);  // undefined (no error)
+
+
+// c) Example where optional chaining prevents a runtime error
+const student = {
+  name: "Rahul",
+  // address is missing entirely!
+};
+
+// Without optional chaining throw error
+// console.log(student.address.city); // Error: Cannot read property 'city'
+
+// With optional chaining safe
+console.log(student.address?.city); // undefined (no crash)
+
+console.log("Program continues normally!");
